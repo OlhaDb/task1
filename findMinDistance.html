@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const departure = [5.7, 4];
+    const destination = [1, 5.8];
+
+    const perfectCity = (a,b) => {
+
+        const x1 = a[0], y1 = a[1], x2 = b[0], y2 = b[1];
+        const checkX = Math.abs(x1-x2);
+        const checkY = Math.abs(y1-y2);
+        let distance;
+
+        if (checkX > checkY) {
+            if (Math.ceil(y1) === Math.ceil(y2)) {
+
+                const ceilDist = (Math.ceil(y1) - y1) + (Math.ceil(y2) - y2);
+                const floorDist = (y1 - Math.floor(y1)) + (y2 - Math.floor(y2));
+
+                distance = floorDist < ceilDist ? checkX + floorDist : checkX + ceilDist;
+            } else {
+                distance = checkX + checkY;
+            }
+        } else {
+            if (Math.ceil(x1) === Math.ceil(x2)) {
+
+                const ceilDist = (Math.ceil(x1) - x1) + (Math.ceil(x2) - x2);
+                const floorDist = (x1 - Math.floor(x1)) + (x2 - Math.floor(x2));
+
+                distance = floorDist < ceilDist ? checkY + floorDist : checkY + ceilDist;
+            } else {
+                distance = checkX + checkY;
+            }
+        }
+        return distance;
+    };
+
+   console.log (perfectCity(departure, destination))
+
+</script>
+
+</body>
+</html>
